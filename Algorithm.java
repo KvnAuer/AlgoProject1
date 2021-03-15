@@ -16,17 +16,21 @@ public class Algorithm {
          FileWriter fw = new FileWriter(myFile);
       
          int n = 100;
-         while (n <= 1000000) {
+         while (n <= 20000) {
             long startTime = System.nanoTime();
             computeSumPowers(0.5, n);
             long endTime = System.nanoTime();
             
             //Now we compute to get the run time in milliseconds
-            long tn = (endTime - startTime) / 1000000;
+            double tn = (endTime - startTime) / 1000000;
+            double tn_n = tn / n;
+            double tn_n2 = tn / (Math.pow(n, 2));
+            double tn_3 = tn / (Math.pow(n, 3));
+            System.out.println(n);
             System.out.println(tn);
             
             // Write data to file. 
-            fw.write(tn + ",");
+            fw.write(n + "," + tn + "," + tn_n + "," + tn_n2 + "," + tn_3);
             fw.flush();
             
             // Help user to see when the program is finished. 
